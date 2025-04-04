@@ -36,7 +36,7 @@ function operate(a, op, b){
     }
 }
 
-// Update display when buttons are clicked
+// Targetting different types of buttons
 
 let numButtons = document.querySelectorAll(".num")
 let opButtons = document.querySelectorAll(".op")
@@ -44,21 +44,41 @@ let clear = document.querySelector(".clear")
 let del = document.querySelector(".del")
 let display = document.querySelector("#outputDisplay")
 
+// On click event listeners for numbers and operators
+
 numButtons.forEach(button =>{
     button.addEventListener("click", updateDisplay)
 })
 
 opButtons.forEach(button =>{
-    button.addEventListener("click", updateDisplay)
+    button.addEventListener("click", handleOperator)
 })
 
 clear.addEventListener("click", clearScreen)
 
 del.addEventListener("click", deleteLast)
 
-function updateDisplay(){
-    
+// Update display when buttons are clicked
+
+function updateDisplay(event){
+    let clickedButton = event.target
+
+    if (clickedButton.classList.contains("num")){
+        currentNumber = clickedButton.getAttribute("data-value")
+    } else if (clickedButton.classList.contains("op")){
+        operator = clickedButton.getAttribute("data-value")
+    }
+
+    display.textContent += currentNumber
 }
+
+// Handling operators
+
+function handleOperator(){
+
+}
+
+// Clears screen or deletes last number
 
 function clearScreen(){
     display.textContent = ""
