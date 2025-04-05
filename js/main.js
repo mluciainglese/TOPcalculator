@@ -71,7 +71,7 @@ function updateDisplay(event){
     if(!isSecondNumber){
         firstNumber += clickedButton.getAttribute("data-value")
     } else {
-        secondNumber += firstNumber = clickedButton.getAttribute("data-value")
+        secondNumber += clickedButton.getAttribute("data-value")
     }
     
     display.textContent += clickedButton.getAttribute("data-value")
@@ -80,6 +80,10 @@ function updateDisplay(event){
 // Handling operators
 
 function handleOperator(event){
+    if(isSecondNumber){
+        calculate()
+    }
+
     isSecondNumber = true
     let clickedButton = event.target
 
@@ -94,13 +98,19 @@ function calculate(){
     let num1 = parseFloat(firstNumber)
     let num2 = parseFloat(secondNumber)
 
-    result = operate(num1, operator, num2)
+    if(secondNumber === ""){
+        result = firstNumber
+    } else {
+        result = operate(num1, operator, num2)
+    }
+    
 
     display.textContent = result
 
     firstNumber = result
     secondNumber = ""
     operator = ""
+    isSecondNumber = false
 }
 
 // Clears screen or deletes last number
