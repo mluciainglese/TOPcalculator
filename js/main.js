@@ -1,6 +1,8 @@
-let currentNumber = ""
+let isSecondNumber = false
+let firstNumber = ""
+let secondNumber = ""
 let operator = ""
-let output = ""
+let result = ""
 
 // Basic calculation functions
 
@@ -42,6 +44,7 @@ let numButtons = document.querySelectorAll(".num")
 let opButtons = document.querySelectorAll(".op")
 let clear = document.querySelector(".clear")
 let del = document.querySelector(".del")
+let equalsButton = document.querySelector(".equals-button")
 let display = document.querySelector("#outputDisplay")
 
 // On click event listeners for numbers and operators
@@ -54,6 +57,8 @@ opButtons.forEach(button =>{
     button.addEventListener("click", handleOperator)
 })
 
+equalsButton.addEventListener("click", calculate)
+
 clear.addEventListener("click", clearScreen)
 
 del.addEventListener("click", deleteLast)
@@ -63,19 +68,39 @@ del.addEventListener("click", deleteLast)
 function updateDisplay(event){
     let clickedButton = event.target
 
-    if (clickedButton.classList.contains("num")){
-        currentNumber = clickedButton.getAttribute("data-value")
-    } else if (clickedButton.classList.contains("op")){
-        operator = clickedButton.getAttribute("data-value")
+    if(!isSecondNumber){
+        firstNumber += clickedButton.getAttribute("data-value")
+    } else {
+        secondNumber += firstNumber = clickedButton.getAttribute("data-value")
     }
-
-    display.textContent += currentNumber
+    
+    display.textContent += clickedButton.getAttribute("data-value")
 }
 
 // Handling operators
 
-function handleOperator(){
+function handleOperator(event){
+    isSecondNumber = true
+    let clickedButton = event.target
 
+    operator = clickedButton.getAttribute("data-value")
+
+    display.textContent += ` ${operator} `
+}
+
+// Perform calculations
+
+function calculate(){
+    let num1 = parseFloat(firstNumber)
+    let num2 = parseFloat(secondNumber)
+
+    result = operate(num1, operator, num2)
+
+    display.textContent = result
+
+    firstNumber = result
+    secondNumber = ""
+    operator = ""
 }
 
 // Clears screen or deletes last number
@@ -85,5 +110,5 @@ function clearScreen(){
 }
 
 function deleteLast(){
-    display.textContent = display.textContent.slice(0, -1)
+    display.textContent = currentNumber.slice(0, -1)
 }
