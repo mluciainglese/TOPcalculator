@@ -13,12 +13,12 @@
 .display {
     display: flex;
     margin-bottom: 10px;
-    width: 400px;
+    width: 500px;
 }
 
 #outputDisplay {
-    width: 400px;
-    height: 20px;
+    width: 500px;
+    height: 40px;
     padding: 10px;
     border: 1px solid black;
     text-align: right;
@@ -26,7 +26,27 @@
 
 .buttons {
     display: flex;
-    max-width: 400px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.clear-delete {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+    
+}
+
+.clear-delete button {
+    width: calc(50% - 5px);
+    height: 70px;
+    gap: 10px;
+    font-size: 24px;
 }
 
 .numbers {
@@ -34,10 +54,12 @@
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 500px;
     margin-right: 10px;
 }
+
 
 .operators {
     display: flex;
@@ -49,10 +71,12 @@
 .operators button {
     flex: 1;
     width: 70px;
-    height: 50px;
+    height: 70px;
+    font-size: 24px;
 }
 
 .num {
     flex: 1 1 30%;
     text-align: center;
+    font-size: 24px;
 }
