@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="css/style.css"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>Calculator</title>
 </head>
 <body>
     <div class="container">
         <section class="display">
-            <div id="output">0</div>
+            <div id="outputDisplay"></div>
         </section>
         <section class="buttons">
+            <div class="clear-delete">
+                <button class="del"><</button>
+                <button class="clear">C</button>
+            </div>
             <div class="numbers">
                 <button class="num" data-value="7">7</button>
                 <button class="num" data-value="8">8</button>
@@ -26,13 +30,11 @@
                 <button class="num" data-value=".">.</button>
             </div>
             <div class="operators">
-                <button class="back"><-</button>
                 <button class="op" data-value="+">+</button>
                 <button class="op" data-value="-">-</button>
                 <button class="op" data-value="*">*</button>
                 <button class="op" data-value="/">/</button>
-                <button class="op" data-value="=">=</button>
-                <button class="clear">C</button>
+                <button class="equals-button" data-value="=">=</button>
             </div>
         </section>
         
