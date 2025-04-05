@@ -116,9 +116,22 @@ function calculate(){
 // Clears screen or deletes last number
 
 function clearScreen(){
+    firstNumber = ""
+    secondNumber = ""
+    operator = ""
+    result = ""
     display.textContent = ""
 }
 
 function deleteLast(){
-    display.textContent = currentNumber.slice(0, -1)
+
+    if(secondNumber !== ""){
+        secondNumber = secondNumber.slice(0, -1)
+    } else if (operator !== "" && secondNumber === ""){
+        operator = operator.slice(0, -1)
+    } else if (firstNumber !== "" && operator === "" && secondNumber === ""){
+        firstNumber = firstNumber.slice(0, -1)
+    }
+
+    display.textContent = firstNumber + operator + secondNumber
 }
