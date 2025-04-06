@@ -76,10 +76,16 @@ function updateDisplay(event){
     let clickedButton = event.target
     let clickedValue = clickedButton.getAttribute("data-value")
 
-    // Prevents decimal point to be entered more than once
+    // Prevents decimal point to be entered more than once per number
 
-    if (clickedValue === "." && firstNumber.includes(".") || secondNumber.includes(".")){
-        return
+    if (clickedValue === "."){
+        if(!isSecondNumber){
+            if (firstNumber.includes(".")){
+                return
+            }
+        } else if (secondNumber.includes(".")){
+            return
+        }
     }
 
     // Clear screen if there's an error, keeps calculator from trying to do a calculation using the error as a parameter
