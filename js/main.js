@@ -107,11 +107,21 @@ function updateDisplay(event){
         display.textContent = ""
     }
 
+    // Storing numbers and preventing long numbers
+
     if(!isSecondNumber){
+        if(firstNumber.length >= 10){
+            return
+        }
         firstNumber += clickedValue
     } else {
+        if(secondNumber.length >= 10){
+            return
+        }
         secondNumber += clickedValue
     }
+
+    // Update display
     
     display.textContent += clickedValue
 }
@@ -119,13 +129,20 @@ function updateDisplay(event){
 // Handling operators
 
 function handleOperator(event){
+    
+    // Prevents adding operators when an error occurred
+
     if (isError){
         return
     }
 
+    // Perform calculation once there's a second number added
+
     if(isSecondNumber){
         calculate()
     }
+
+    // Prevents calculations when there's no initial value
 
     if (firstNumber === ""){
         return
@@ -133,15 +150,22 @@ function handleOperator(event){
 
     // Makes sure first calculated number is show when chaining calculations
 
-    if (justCalculated){
+    if(justCalculated){
         display.textContent = firstNumber
         justCalculated = false
     }
 
+    // Switches variable to true to allow calculations
+
     isSecondNumber = true
+
+    // Stores operator to be used in calculation
+
     let clickedButton = event.target
 
     operator = clickedButton.getAttribute("data-value")
+
+    // Updates display
 
     display.textContent += ` ${operator} `
 }
@@ -152,9 +176,13 @@ function calculate(){
     let num1 = parseFloat(firstNumber)
     let num2 = parseFloat(secondNumber)
 
+    // Stops calculations if there's an error
+
     if(isError){
         return
     }
+
+    // Calculation time
 
     if(secondNumber === ""){
         result = firstNumber
@@ -164,14 +192,22 @@ function calculate(){
 
     // Prevents calculations when pressing equals button first
 
-    if (firstNumber === "" && operator === "" && secondNumber === ""){
+    if(firstNumber === "" && operator === "" && secondNumber === ""){
         display.textContent = 0
         return
+    }
+
+    // Limits results to 12 characters
+
+    if(result.length >= 12){
+        result = result.slice(0, 12) + "..."
     }
     
     // Makes sure new number doesn't get appended to previous result when starting a new calculation without clearing display
 
     justCalculated = true
+
+    // Updates display and clears variables
 
     display.textContent = result
 
