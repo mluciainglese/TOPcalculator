@@ -98,3 +98,51 @@ _A developer log for the calculator app, part of The Odin Project's curriculum._
 - Finalizing UI: Now that the logic is more stable, I'll focus on fine tuning the layout and making sure the UI looks good, especially for cases like long numbers or multiple operations.
 - Keyboard input support: Add the ability for users to control the calculator with keyboard inputs for a more user friendly experience.
 - Overall design refinement.
+
+---
+
+## Phase 4: Wrapping Up Core Features (April 6)
+
+**Goals**
+
+- Make sure all the operations work as intended.
+- Handle decimal input properly.
+- Fix issues with overflowing the display.
+- Prevent errors when users keep pressing operators.
+- Make sure dividing by zero doesn't crash the app, and show a funny error message instead.
+- Get the clear and backspace buttons working perfectly.
+- Reset everything after hitting the equals button.
+
+**Challenges**
+
+- Figuring out what was causing an error when clearing the display.
+- Making sure the user can do chained calculations without causing any issues. There were a few bugs around this functionality, I had to find how and what was causing it.
+- Solving how to avoid appending a new number to the previous result when trying to make a new calculation without clearing the display.
+- Handling the logic around decimals, especially with all the states (like whether it's the first or second number) was a bit more complicated than expected.
+- Making sure that error handling didn't prevent future calculations.
+
+**Approach**
+
+- Started by making sure all the basic operations (add, subtract, multiply, divide) worked properly, while allowing for decimals.
+- Made sure the display only shows up to 10 characters per number or part of the equation, and when results get longer, they’re trimmed with an ellipsis (“…”) to avoid overflowing issues.
+- Handled the divide-by-zero scenario by displaying a message that makes it clear the operation can’t be done, but doesn’t break the app.
+- After you hit the equals button, I ensured that everything resets so you can start a new calculation cleanly.
+- Finally, fixed the clear button so it wipes everything correctly, and the backspace button deletes the last input like it should.
+
+**Fixes & Decisions**
+
+- Decimals: I added the rule that only one decimal is allowed per number, which makes things easier to track and prevents people from accidentally typing things like 12.3.5.
+- Clear & Backspace: The clear button wipes everything clean and starts fresh, while backspace deletes one digit at a time, which is exactly what users expect.
+- Had some unexpected bugs after creating new functionalities, like not being able to properly chain calculations. When I fixed that, then the display wasn't showing the result, meaning I had to go back to the code and figure out how to fix the new bug.
+
+**Reflection**
+
+It was very challenging because it felt like every time I tried to fix a bug, a new one was showing up. So there was a lot of trial and error, debugging, and trying to reproduce the bugs to find out exactly how and why they happened to be able to fix them. I feel pretty good about where things are right now. I’m confident the main functionalities are solid.
+
+---
+
+**Next Steps**
+
+- Styling the calculator: Now that the logic is mostly working, it’s time to focus on making it look nice. I’ll work on button styles, fonts and colors.
+- Keyboard support: I’ll add support for keyboard input so users can type in their calculations. The buttons will work just like they do when clicked, but with keyboard events instead.
+- Testing across devices: Once styling is in place, I’ll make sure it looks good on mobile and desktop devices, and adjust things if needed.
