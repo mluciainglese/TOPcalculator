@@ -1,4 +1,5 @@
 let isSecondNumber = false
+let justCalculated = false
 let firstNumber = ""
 let secondNumber = ""
 let operator = ""
@@ -63,10 +64,20 @@ clear.addEventListener("click", clearScreen)
 
 del.addEventListener("click", deleteLast)
 
-// Update display when buttons are clicked
+// Update display when buttons are clicked (using isSecondNumber to know which part of the calculation is happening)
 
 function updateDisplay(event){
     let clickedButton = event.target
+
+    if (justCalculated){
+        if (!operator){
+            firstNumber = ""
+        }
+        secondNumber = ""
+        isSecondNumber = false
+        justCalculated = false
+        display.textContent = ""
+    }
 
     if(!isSecondNumber){
         firstNumber += clickedButton.getAttribute("data-value")
@@ -82,6 +93,10 @@ function updateDisplay(event){
 function handleOperator(event){
     if(isSecondNumber){
         calculate()
+    }
+
+    if (firstNumber === ""){
+        return
     }
 
     isSecondNumber = true
@@ -104,6 +119,7 @@ function calculate(){
         result = operate(num1, operator, num2)
     }
     
+    justCalculated = true
 
     display.textContent = result
 
@@ -120,6 +136,8 @@ function clearScreen(){
     secondNumber = ""
     operator = ""
     result = ""
+    isSecondNumber = false
+    justCalculated = false
     display.textContent = ""
 }
 
