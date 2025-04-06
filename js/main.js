@@ -1,5 +1,6 @@
 let isSecondNumber = false
 let justCalculated = false
+let isError = false
 let firstNumber = ""
 let secondNumber = ""
 let operator = ""
@@ -20,6 +21,11 @@ function multiply(a, b){
 }
 
 function divide(a, b){
+    if (b === 0){
+        isError = true
+        return "I don't think so" // Makes sure you can't divide by zero
+        
+    }
  return a / b
 }
 
@@ -35,7 +41,7 @@ function operate(a, op, b){
     } else if (op === "/"){
         return divide(a, b)
     } else {
-        return "Err"
+        return "Error"
     }
 }
 
@@ -68,6 +74,20 @@ del.addEventListener("click", deleteLast)
 
 function updateDisplay(event){
     let clickedButton = event.target
+    let clickedValue = clickedButton.getAttribute("data-value")
+
+    // Prevents decimal point to be entered more than once
+
+    if (clickedValue === "." && firstNumber.includes(".") || secondNumber.includes(".")){
+        return
+    }
+
+    // Clear screen if there's an error, keeps calculator from trying to do a calculation using the error as a parameter
+
+    if (isError){
+        clearScreen()
+        isError = false // resets error state
+    }
 
     // Start fresh with new number if calculation was just made 
 
@@ -82,17 +102,21 @@ function updateDisplay(event){
     }
 
     if(!isSecondNumber){
-        firstNumber += clickedButton.getAttribute("data-value")
+        firstNumber += clickedValue
     } else {
-        secondNumber += clickedButton.getAttribute("data-value")
+        secondNumber += clickedValue
     }
     
-    display.textContent += clickedButton.getAttribute("data-value")
+    display.textContent += clickedValue
 }
 
 // Handling operators
 
 function handleOperator(event){
+    if (isError){
+        return
+    }
+
     if(isSecondNumber){
         calculate()
     }
@@ -122,10 +146,21 @@ function calculate(){
     let num1 = parseFloat(firstNumber)
     let num2 = parseFloat(secondNumber)
 
+    if(isError){
+        return
+    }
+
     if(secondNumber === ""){
         result = firstNumber
     } else {
         result = operate(num1, operator, num2)
+    }
+
+    // Prevents calculations when pressing equals button first
+
+    if (firstNumber === "" && operator === "" && secondNumber === ""){
+        display.textContent = 0
+        return
     }
     
     // Makes sure new number doesn't get appended to previous result when starting a new calculation without clearing display
@@ -149,6 +184,7 @@ function clearScreen(){
     result = ""
     isSecondNumber = false
     justCalculated = false
+    isError = false
     display.textContent = ""
 }
 
@@ -164,3 +200,4 @@ function deleteLast(){
 
     display.textContent = firstNumber + operator + secondNumber
 }
+
