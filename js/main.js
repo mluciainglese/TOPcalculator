@@ -69,6 +69,8 @@ del.addEventListener("click", deleteLast)
 function updateDisplay(event){
     let clickedButton = event.target
 
+    // Start fresh with new number if calculation was just made 
+
     if (justCalculated){
         if (!operator){
             firstNumber = ""
@@ -99,6 +101,13 @@ function handleOperator(event){
         return
     }
 
+    // Makes sure first calculated number is show when chaining calculations
+
+    if (justCalculated){
+        display.textContent = firstNumber
+        justCalculated = false
+    }
+
     isSecondNumber = true
     let clickedButton = event.target
 
@@ -119,6 +128,8 @@ function calculate(){
         result = operate(num1, operator, num2)
     }
     
+    // Makes sure new number doesn't get appended to previous result when starting a new calculation without clearing display
+
     justCalculated = true
 
     display.textContent = result
