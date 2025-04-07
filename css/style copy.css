@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid red;
     border-radius: 5px;
     padding: 20px;
     margin: 50px auto;
@@ -85,42 +85,32 @@
 
 /* Calculator background */
 
-.theme-comic {
-    background-color: #494848;
-}
-
 .theme-comic .container{
     background: url("../images/halftone3.png");
     min-height: 100%;
     background-size: 100%;
     background-blend-mode: lighten;
-    border: 4px solid black;
-    border-radius: 8px;
-    box-shadow: 3px 3px 0 black;
-    transition: all 0.2s ease-in-out;
-}
-
-/* Display styling */
-.theme-comic #outputDisplay {
-    font-family: 'Bangers', sans-serif;
-    font-size: 45px;
-    border: 4px solid black;
-    border-radius: 8px;
-    box-shadow: 3px 3px 0 black;
-    text-shadow: 1px 1px 0 #000;
-    transition: all 0.2s ease-in-out;
 }
 
 /* Button styling */
 
+.theme-comic button {
+    border: 4px solid black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(0, 0, 0, 0.3); /* Rough shadow effect */
+    border-radius: 8px;
+    transform: rotate(-1deg); /* Slight rotation */
+    transition: all 0.2s ease;
+}
+
+/* Display and container with comic style borders */
+.theme-comic .container,
+.theme-comic #outputDisplay,
 .theme-comic button {
     font-family: 'Bangers', sans-serif;
     font-size: 35px;
     border: 4px solid black;
     border-radius: 8px;
     box-shadow: 3px 3px 0 black;
-    text-shadow: 1px 1px 0 #000;
-    transform: rotate(-1deg);
     transition: all 0.2s ease-in-out;
 }
 
@@ -152,20 +142,21 @@
     color: #e63946;
 }
 
+/* Comic style text shadow */
+.theme-comic button,
+.theme-comic #outputDisplay {
+    text-shadow: 1px 1px 0 #000;
+}
+
+
+
 /* Hover effect with slight rotation and shadow */
 .theme-comic button:hover {
     transform: scale(1.05) rotate(1deg);
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-
-/* ===============GOTH THEME=============== */  
-
-
-
-
-
-
+  
 /* Responsiveness */
 
 @media only screen and (max-width: 600px) {
