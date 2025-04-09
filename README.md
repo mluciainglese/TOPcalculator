@@ -146,3 +146,46 @@ It was very challenging because it felt like every time I tried to fix a bug, a 
 - Styling the calculator: Now that the logic is mostly working, it’s time to focus on making it look nice. I’ll work on button styles, fonts and colors.
 - Keyboard support: I’ll add support for keyboard input so users can type in their calculations. The buttons will work just like they do when clicked, but with keyboard events instead.
 - Testing across devices: Once styling is in place, I’ll make sure it looks good on mobile and desktop devices, and adjust things if needed.
+
+---
+
+## Phase 4: Finishing UI and Creating Different Themes (April 7-9)
+
+**Goals**
+
+- Finish polishing the calculator structure.
+- Add multiple visual themes to the calculator to showcase different aesthetic styles.
+- Build a theme-switching system using buttons that dynamically update the UI.
+- Ensure the experience is smooth, intuitive, and doesn't break the existing layout.
+
+**Challenges**
+
+- Managing three different themes and finding the right approach for each one, making them all unique without making them look unprofessional. Finding the right color palettes, fonts, styles and effects took a lot of time, tweaking and trial and error.
+- Making sure the code was readable and there weren't any redundancy or specificity issues.
+- Finding a way to transition smoothly between themes, without anything breaking or looking janky. At one point all themes were loading at the same time.
+- Creating the right logic to load the themes and hiding unnecesary elements for each theme. 
+
+**Approach**
+
+- Each theme has it's own class. When a button is clicked, the script:
+    - Removes any existing theme-* class from the body.
+    - Adds the new class (theme-90s, etc) based on the clicked button.
+- Used visibility: hidden instead of display: none to hide the paragraphs without moving the buttons.
+
+**Fixes & Decisions**
+
+- Default mode logic: If the selected theme is "default", the text becomes visible again.
+
+**Reflection**
+
+This was a very time consuming thing to do. Who decides to create several different themes for a calculator project that isn't probably going to end up in my portfolio anyway? But I wanted to give it a go, I didn't want to do the bare minimum and have a basic calculator and call it a day. 
+This pushed my understanding of DOM manipulation, CSS architecture, and conditional logic way further.
+It's also helping me realize how much I enjoy the design/dev crossover — and how small interactions (like a theme switch) can give a project so much personality.
+Overall I had a lot of fun, even when it became frustrating. The gothic theme was definitely looking more tacky than elegant to begin with, but I think I really happy with it (and the rest of them) now.
+
+---
+
+**Next Steps**
+
+- Keyboard support: I’ll add support for keyboard input so users can type in their calculations. The buttons will work just like they do when clicked, but with keyboard events instead.
+- Testing across devices: Once styling is in place, I’ll make sure it looks good on mobile and desktop devices, and adjust things if needed.
