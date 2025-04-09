@@ -1,3 +1,5 @@
+// Default variables needed for the calculator to do its job
+
 let isSecondNumber = false
 let justCalculated = false
 let isError = false
@@ -23,7 +25,7 @@ function multiply(a, b){
 function divide(a, b){
     if (b === 0){
         isError = true
-        return "I don't think so" // Makes sure you can't divide by zero
+        return "NOPE!" // Makes sure you can't divide by zero
         
     }
  return a / b
@@ -243,3 +245,41 @@ function deleteLast(){
     display.textContent = firstNumber + operator + secondNumber
 }
 
+// THEME SWITCHER
+
+// Store buttons
+
+let switchButtons = document.querySelectorAll(".theme-switch")
+
+// Add event listeners to buttons and trigger the switch function
+
+switchButtons.forEach(button =>{
+    button.addEventListener("click", switchTheme)
+})
+
+// Switches themes
+
+function switchTheme(event){
+    let newTheme = event.target.dataset.theme 
+    let newThemeClass = "theme-" + newTheme
+
+    let currentTheme = document.body.classList[0] // Get the first class to remove (current theme)
+
+    if (currentTheme) {
+        // Remove the current theme class from the body if there is one
+        document.body.classList.remove(currentTheme)
+    }
+
+    // Add the new theme class to the body
+    document.body.classList.add(newThemeClass)
+
+    // Hides text when theme is applied, adds it back when back to default
+
+    if(newTheme !== "default"){
+        document.querySelector(".theme-subtle").style.visibility = 'hidden'
+        document.querySelector(".theme-bold").style.visibility = 'hidden'
+    } else {
+        document.querySelector(".theme-subtle").style.visibility = 'visible'
+        document.querySelector(".theme-bold").style.visibility = 'visible'
+    }
+}
