@@ -1,4 +1,75 @@
-/* ===============BASIC LAYOUT=============== */
+/* ===============PAGE LAYOUT=============== */
+
+.page-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 40px;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .intro-panel {
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .theme-subtle {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    font-size: 1.3rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .theme-bold {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 4.5rem;
+    letter-spacing: 0.3rem;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    color: #111;
+  }
+  
+  .theme-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .theme-switch {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 2px solid #000;
+    background-color: #fff;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .theme-switch:hover {
+    background-color: #eee;
+    transform: translateY(-2px);
+  }
+  
+  .calculator-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 300px;
+  }
+  
+
+
+/* ===============BASIC CALCULATOR LAYOUT=============== */
 
 .container {
     display: flex;
@@ -8,7 +79,7 @@
     border-radius: 5px;
     padding: 40px;
     margin: 50px auto;
-    max-width: 500px;   
+    max-width: 500px;  
 }
 
 .display {
@@ -16,13 +87,13 @@
     margin-bottom: 20px;
     width: 500px;
     font-size: 40px;
+    border: 2px solid black;
 }
 
 #outputDisplay {
     width: 500px;
     height: 60px;
     padding: 10px;
-    border: 2px solid black;
     text-align: right;
 }
 
@@ -81,6 +152,18 @@
     text-align: center;
     border: 2px solid black;
 }
+
+/* Calculator too big, calculator needs shrunk */
+
+.calculator-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.75);
+    transform-origin: top center;
+    margin: 0 auto;
+  }
+  
 
 /* ===============COMIC BOOK THEME=============== */
 
@@ -169,7 +252,7 @@
 }
 
 
-/* ===============GOTH THEME=============== */  
+/* ===============GOTHIC THEME=============== */  
 
 /* Background style */ 
 
@@ -323,6 +406,152 @@
         0 6px 10px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px) scale(1.02);
 }
+
+/* ===============90s THEME=============== */
+
+.theme-90s {
+    background-color: #44a5cc;
+}
+
+
+/* Calculator body style */
+
+.theme-90s .container {
+    background-image: url(../images/90s3.jpeg);
+    background-size: cover;
+    border-radius: 50px;
+    border: 4px solid #000;
+    box-shadow:
+        2px 2px 0 #373737, /* Bottom shadow (slightly lighter grey) */
+        30px 40px 30px #000000,
+        inset 2px 2px 4px #f0f0f0, /* Top highlight (slightly lighter grey) */
+        inset -4px -4px 10px rgba(0, 0, 0, 0.432);
+    transform: rotate(-2deg); /* tilt */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Display area */
+
+.theme-90s .display {
+    position: relative;
+    background-color: #dbb1cd;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #727272;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    text-align: right;
+    color: #333;
+    box-shadow: 
+        inset 0 0 8px rgba(0, 0, 0, 1); /* Stronger inset shadow to make it look recessed */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Adjusted layout for numbers and operators */
+
+.theme-90s .numbers {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 380px;  /* Slightly reduce width to ensure it fits */
+    height: 500px;
+}
+
+.theme-90s .operators {
+    height: 470px;
+}
+
+.theme-90s .operators button {
+    margin-bottom: 13px;
+}
+
+/* General button design */
+
+.theme-90s button {
+    border-radius: 20px;
+    padding: 15px 25px;
+    width: 90px;
+    height: 80px; 
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-shadow: 2px 2px 0px #000;
+    box-shadow:
+        2px 2px 0 #373737, /* Bottom shadow (slightly lighter grey) */
+        inset 2px 2px 4px #f0f0f0, /* Top highlight (slightly lighter grey) */
+        inset -4px -4px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Fixing clear and delete buttons placement and size */
+
+.theme-90s .clear-delete {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto 30px;
+}
+
+.theme-90s .clear-delete button {
+    width: calc(50% - 10px);
+    height: 70px; 
+    border-radius: 15px;
+    border: 2px solid black;
+    background-color: #1be3b4;
+    box-shadow:
+        2px 2px 0 #373737,
+        inset 2px 2px 4px #f0f0f0,
+        inset -4px -4px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-90s .theme-switch {
+    background-color: #1be3b4;
+    width: auto;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+}
+
+
+/* Buttons active state */
+
+.theme-90s button:active {
+    transform: translateY(4px); /* Push the button down slightly */
+    box-shadow:
+        1px 1px 0 #373737,
+        inset 1px 1px 2px #f0f0f0,
+        inset -2px -2px 2px rgba(0, 0, 0, 0.3); 
+}
+
+
+/* Buttons colors */
+
+.theme-90s .num {
+    background-color: #ff4b87;
+}
+
+.theme-90s .op {
+    background-color: #cc6dff;
+}
+
+.theme-90s .equals-button {
+    background-color: #ffea4a;
+}
+
+.theme-90s .del,
+.theme-90s .clear {
+    background-color: #1be3b4;
+}
+
+
+
+
+
 
 
 /* Responsiveness */
